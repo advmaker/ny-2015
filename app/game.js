@@ -25,7 +25,7 @@ function WalkingCat(options)
                 "src": {
                     "walked": 'assets/img/cat/walkingcat_transparent.gif',
                     "static": 'assets/img/cat/cat_walk.png',
-                    "resentful": 'assets/cat/cat_slippers.png'
+                    "resentful": 'assets/img/cat/cat_slippers.png'
                 }
                 , "speed": 0.2
                 , "width": 100
