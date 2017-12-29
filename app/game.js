@@ -4,12 +4,18 @@ function WalkingCat(options)
         _init = function(cat){
             cat.changeState(cat.STATIC_STATE)
                 .$cat.css({
-                    "display": 'none'
-                    , "position": 'absolute'
-                    , "width": cat.options.width
-                    , "height": cat.options.height
-                    , "z-index": cat.options.z
-                })
+                "display": 'none'
+                , "position": 'absolute'
+                , "width": cat.options.width
+                , "height": cat.options.height
+                , "z-index": cat.options.z
+                , "user-drag": 'none'
+                , "user-select": 'none'
+                , "-moz-user-select": 'none'
+                , "-webkit-user-drag": 'none'
+                , "-webkit-user-select": 'none'
+                , "-ms-user-select": 'none'
+            })
                 .appendTo('body');
             return cat;
         }
@@ -195,7 +201,7 @@ function Game()
                 var
                     itemData = this.items[Math.floor(Math.random()*this.items.length)]
                     , item = new GameItem($.extend({"position": position}, itemData))
-                    ;
+                ;
                 window.setTimeout(this.missItem.bind(this, item), this.difficulty.itemLifeTime);
                 item.$img.on('click.Game', this.cachedItem.bind(this, item));
             }
@@ -222,7 +228,7 @@ function Game()
                 var
                     cat = new WalkingCat()
                     , points = {}
-                    ;
+                ;
                 points.start = new Point(
                     $(window).width() - cat.$cat.width()
                     , _random_int(
@@ -299,6 +305,12 @@ function GameItem(options)
                     , "display": 'none'
                     , "z-index": 1001
                     , "cursor": 'pointer'
+                    , "user-drag": 'none'
+                    , "user-select": 'none'
+                    , "-moz-user-select": 'none'
+                    , "-webkit-user-drag": 'none'
+                    , "-webkit-user-select": 'none'
+                    , "-ms-user-select": 'none'
                 })
                 .appendTo('body')
             ;
@@ -333,11 +345,11 @@ function GameItem(options)
                 this
                     .stopMelting()
                     .$img.animate({
-                        "width": 0
-                        , "height": 0
-                        , "left": point.X
-                        , "top": point.Y
-                    });
+                    "width": 0
+                    , "height": 0
+                    , "left": point.X
+                    , "top": point.Y
+                });
                 return this;
             }
         }
